@@ -22,7 +22,7 @@ jobs:
           paths:
             - node_modules
             - functions/node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}-{{ checksum "functions/package.json" }}
+          key: v1-dependencies-{{ checksum "package.json" }}
   #------------------------------------------------------------------------------
   #UNIT TESTS FOR BACK-END
   test-backend:
@@ -32,7 +32,6 @@ jobs:
     steps:
       - checkout:
           path: ~/repo
-      # Install firebase tools
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -53,7 +52,7 @@ jobs:
           paths:
             - node_modules
             - functions/node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}-{{ checksum "functions/package.json" }}
+          key: v1-dependencies-{{ checksum "package.json" }}
   #------------------------------------------------------------------------------
   #DEPLOY-FRONTEND will bring the webapp to staging environment using master branch
   deploy-frontend:
@@ -73,7 +72,7 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "package.json" }}-{{ checksum "functions/package.json" }}
+            - v1-dependencies-{{ checksum "package.json" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
       # install dependencies
@@ -89,7 +88,7 @@ jobs:
           paths:
             - node_modules
             - functions/node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}-{{ checksum "functions/package.json" }}
+          key: v1-dependencies-{{ checksum "package.json" }}-
 
       # run build
       - run: npm run build
@@ -109,7 +108,7 @@ jobs:
       - run: echo -n $PROD_FRONTEND_ENV | tr " " "\n" > .env
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "package.json" }}-{{ checksum "functions/package.json" }}
+            - v1-dependencies-{{ checksum "package.json" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
       # install dependencies
@@ -120,8 +119,7 @@ jobs:
           paths:
             - node_modules
             - functions/node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}-{{ checksum "functions/package.json" }}
-
+          key: v1-dependencies-{{ checksum "package.json" }}
       # run build
       - run: npm run build
 
