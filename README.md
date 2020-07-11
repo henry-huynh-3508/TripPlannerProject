@@ -15,7 +15,8 @@ https://nodejs.org/en/
 ```
 ## Frontend prototype
 * [Frontend prototype](https://www.figma.com/file/KTELboONOIYDHiwHSA4mOc/Trip-Planner-Prototype?node-id=0%3A1)
-
+## Backend Architecture
+* [Backend Architecture](https://drive.google.com/file/d/1MF4VbXmqvhLBsdPLjF6fkeJCv70jxF8M/view?usp=sharing)
 ## Running the tests
 
 Test can be run in both frontend and backend folder.
