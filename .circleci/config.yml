@@ -45,7 +45,7 @@ jobs:
       # install dependencies
       - run: npm install
       # run test
-      - run: npm test
+      # - run: npm test
 
       # save new caches
       - save_cache:
@@ -77,10 +77,6 @@ jobs:
             - v1-dependencies-
       # install dependencies
       - run: npm install
-
-      # Set secret keys
-      # FRONT END PUBLIC KEYS
-      - run: cd src/API_keys && printenv DEV_FIREBASE_CONFIG > projectConfig.json
 
       # save new caches
       - save_cache:
