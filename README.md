@@ -13,7 +13,8 @@ What things you need to install the software and how to install them
 ```
 https://nodejs.org/en/
 ```
-
+## Frontend prototype
+* [Frontend prototype](https://www.figma.com/file/KTELboONOIYDHiwHSA4mOc/Trip-Planner-Prototype?node-id=0%3A1)
 
 ## Running the tests
 
