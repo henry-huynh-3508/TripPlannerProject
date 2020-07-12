@@ -11,7 +11,7 @@ const mockCityInfoResponse = {
 const mockCityMetadataResponse = [
   {
     ID: "1",
-    Name: "London",
+    Name: "Edmonton",
   },
   {
     ID: "2",
@@ -19,15 +19,15 @@ const mockCityMetadataResponse = [
   },
   {
     ID: "3",
-    Name: "London",
+    Name: "Montreal",
   },
   {
     ID: "4",
-    Name: "London",
+    Name: "Toronto",
   },
   {
     ID: "5",
-    Name: "London",
+    Name: "Vancouver",
   },
 ];
 
