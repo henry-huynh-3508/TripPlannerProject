@@ -1,11 +1,14 @@
 import React from "react";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
+
+import Container from "@material-ui/core/Container";
 import Header from "./header/Header";
+import CityDropdown from "./dropdownmenu/CityDropdown";
 import CityComponent from "../city/CityComponent";
 
 const GET_CITIES = gql`
-  query testGetCityMetadata {
+  query GetCityMetadata {
     City_getCityMetadata {
       ID
       Name
@@ -15,14 +18,25 @@ const GET_CITIES = gql`
 
 function Tripplanner() {
   const { loading, error, data } = useQuery(GET_CITIES);
+  const [cityID, setCityID] = React.useState(1);
+
+  const handleCityChange = (id) => {
+    setCityID(id);
+  };
+
   if (error) return <h1>Something went wrong!</h1>;
   if (loading) return <h1>Loading...</h1>;
-  console.log(data);
   return (
     <div>
       <Header></Header>
-      <main main style={{ marginTop: "100px" }}>
-        <CityComponent cities={data.City_getCityMetadata}></CityComponent>
+      <main style={{ marginTop: "100px" }}>
+        <Container>
+          <CityDropdown
+            cities={data.City_getCityMetadata}
+            onCityChange={handleCityChange}
+          ></CityDropdown>
+        </Container>
+        <CityComponent cityID={cityID}></CityComponent>
       </main>
     </div>
   );
