@@ -69,7 +69,6 @@ describe("Test City Queries", () => {
     const result: any = await query(MOCK_GET_CITY_INFO_QUERY, {
       variables: { id: "1" },
     });
-    console.log(result.data.City_getCityInfo);
     expect(result.data.City_getCityInfo).toEqual(mockCityInfoResponse);
   });
 });
