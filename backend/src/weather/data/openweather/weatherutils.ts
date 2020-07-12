@@ -24,7 +24,7 @@ export function convertDate(day: number) {
       return "THU";
     case 5:
       return "FRI";
-    case 6:
+    default:
       return "SAT";
   }
 }
