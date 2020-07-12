@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/index.js"
+    "lint": "tslint --project tsconfig.json",
+    "build": "./node_modules/.bin/tsc",
+    "start": "npm run build && node app/src/index.js"
   },
   "author": "",
   "license": "ISC",
@@ -16,5 +18,16 @@
     "graphql": "^15.3.0",
     "graphql-tools": "^6.0.12",
     "merge-graphql-schemas": "^1.7.8"
+  },
+  "devDependencies": {
+    "@types/jest": "^25.2.3",
+    "jest": "^25.5.4",
+    "ts-jest": "^25.5.1",
+    "tslint": "^6.1.2",
+    "typescript": "^3.9.5"
+  },
+  "private": true,
+  "engines": {
+    "node": "10"
   }
 }
