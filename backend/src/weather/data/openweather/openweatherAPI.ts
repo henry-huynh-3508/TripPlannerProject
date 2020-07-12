@@ -7,6 +7,7 @@ export class OpenWeatherAPI {
   private key: string;
   private lat: number = 0;
   private lng: number = 0;
+  private unit: string = "metric";
 
   constructor(key: string) {
     this.key = key;
@@ -28,6 +29,7 @@ export class OpenWeatherAPI {
       queryParams: {
         lat: String(this.lat),
         lon: String(this.lng),
+        units: this.unit,
         exclude: "minutely,hourly,daily",
         appid: this.key,
       },
@@ -48,6 +50,7 @@ export class OpenWeatherAPI {
       queryParams: {
         lat: String(this.lat),
         lon: String(this.lng),
+        units: this.unit,
         exclude: "current,minutely,hourly",
         appid: this.key,
       },

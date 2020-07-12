@@ -11,11 +11,20 @@ const schema = gql`
     SUN
   }
   """
-  WeatherForecast object contains forecast info of a day
+  CurrentWeatherForecast object contains forecast info of a day
   """
-  type WeatherForecast {
+  type CurrentWeatherForecast {
     DayOfWeek: DayOfWeek
     Temperature: Float
+    Description: String
+  }
+  """
+  DailyWeatherForecast object contains forecast info of multiple days
+  """
+  type DailyWeatherForecast {
+    DayOfWeek: DayOfWeek
+    MinTemperature: Float
+    MaxTemperature: Float
     Description: String
   }
   input WeatherCoordinate {
@@ -29,14 +38,14 @@ const schema = gql`
     """
     Weather_getCurrentWeatherForecast(
       coordinate: WeatherCoordinate
-    ): WeatherForecast
+    ): CurrentWeatherForecast
     """
     This query is used to get weather forecast based on requested days
     """
     Weather_getWeatherForecastInAdvance(
       coordinate: WeatherCoordinate
       howmanydays: Int = 5
-    ): [WeatherForecast]
+    ): [DailyWeatherForecast]
   }
 `;
 export default schema;
