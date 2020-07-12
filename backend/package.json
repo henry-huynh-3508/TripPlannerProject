@@ -4,12 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "apollo-server": "^2.15.1",
-    "graphql": "^15.3.0"
+    "apollo-server-express": "^2.15.1",
+    "express": "^4.17.1",
+    "graphql": "^15.3.0",
+    "graphql-tools": "^6.0.12",
+    "merge-graphql-schemas": "^1.7.8"
   }
 }
