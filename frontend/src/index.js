@@ -1,11 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "@apollo/react-hooks";
 import { Tripplanner } from "./app/Tripplanner";
 import * as serviceWorker from "./serviceWorker";
 
+const client = new ApolloClient({
+  uri: process.env.REACT_APP_SERVER_ENDPOINT,
+});
+
 ReactDOM.render(
   <React.StrictMode>
-    <Tripplanner />
+    <ApolloProvider client={client}>
+      <Tripplanner />
+    </ApolloProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
