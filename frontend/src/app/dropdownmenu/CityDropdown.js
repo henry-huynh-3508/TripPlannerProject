@@ -1,82 +1,64 @@
 import React from "react";
-import { withStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
-import Menu from "@material-ui/core/Menu";
+import { makeStyles } from "@material-ui/core/styles";
+import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import Button from "@material-ui/core/Button";
 import ListItemText from "@material-ui/core/ListItemText";
 
-const StyledMenu = withStyles({
-  paper: {
-    border: "1px solid #d3d4d5",
+const useStyles = makeStyles((theme) => ({
+  button: {
+    display: "block",
+    marginTop: theme.spacing(2),
   },
-})((props) => (
-  <Menu
-    elevation={0}
-    getContentAnchorEl={null}
-    anchorOrigin={{
-      vertical: "bottom",
-      horizontal: "center",
-    }}
-    transformOrigin={{
-      vertical: "top",
-      horizontal: "center",
-    }}
-    {...props}
-  />
-));
-
-const StyledMenuItem = withStyles((theme) => ({
-  root: {
-    "&:focus": {
-      backgroundColor: theme.palette.primary.main,
-      "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
-        color: theme.palette.common.white,
-      },
-    },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
   },
-}))(MenuItem);
+}));
 
-export default function CityDropdown(props) {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [selected, setSelected] = React.useState(0);
+export default function CityDropdown2(props) {
+  const classes = useStyles();
+  const [city, setCity] = React.useState("Edmonton");
+  const [open, setOpen] = React.useState(false);
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = (index, cityID) => {
-    setAnchorEl(null);
-    setSelected(index);
+  const handleClose = (cityID, cityName) => {
+    setOpen(false);
+    setCity(cityName);
     props.onCityChange(cityID);
   };
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
   return (
     <div>
-      <Button
-        aria-controls="customized-menu"
-        aria-haspopup="true"
-        variant="contained"
-        color="primary"
-        onClick={handleClick}
-      >
-        SELECT A CITY
+      <Button className={classes.button} onClick={handleOpen}>
+        Please select a city
       </Button>
-      <StyledMenu
-        id="customized-menu"
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
-      >
-        {props.cities.map((city, index) => (
-          <StyledMenuItem
-            key={index}
-            onClick={() => handleClose(index, city.ID)}
-            selected={selected === index}
-          >
-            <ListItemText primary={city.Name} />
-          </StyledMenuItem>
-        ))}
-      </StyledMenu>
+      <FormControl className={classes.formControl}>
+        <InputLabel id="demo-controlled-open-select-label">City</InputLabel>
+        <Select
+          labelId="demo-controlled-open-select-label"
+          id="demo-controlled-open-select"
+          open={open}
+          onClose={handleClose}
+          onOpen={handleOpen}
+          value={city}
+        >
+          {props.cities.map((city, index) => (
+            <MenuItem
+              value={city.Name}
+              key={index}
+              onClick={() => handleClose(city.ID, city.Name)}
+            >
+              <ListItemText primary={city.Name} />
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
     </div>
   );
 }

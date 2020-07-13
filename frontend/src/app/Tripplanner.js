@@ -18,8 +18,8 @@ const GET_CITIES = gql`
 
 function Tripplanner() {
   const { loading, error, data } = useQuery(GET_CITIES);
+  //local cityID state
   const [cityID, setCityID] = React.useState(1);
-
   const handleCityChange = (id) => {
     setCityID(id);
   };
