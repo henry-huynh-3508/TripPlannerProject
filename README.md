@@ -1,6 +1,6 @@
 # TripPlannerProject
 
-This is a simple project that builds a trip planner web application.
+This is a simple project that builds a trip planner web application. You can visit the live app at (https://henry-tripplanner.web.app/)
 
 ## Getting Started
 
