@@ -30,12 +30,11 @@ function Tripplanner() {
     <div>
       <Header></Header>
       <main style={{ marginTop: "100px" }}>
-        <Container>
-          <CityDropdown
-            cities={data.City_getCityMetadata}
-            onCityChange={handleCityChange}
-          ></CityDropdown>
-        </Container>
+        <CityDropdown
+          cities={data.City_getCityMetadata}
+          onCityChange={handleCityChange}
+        ></CityDropdown>
+
         <CityComponent cityID={cityID}></CityComponent>
       </main>
     </div>

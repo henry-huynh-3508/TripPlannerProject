@@ -5,7 +5,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Button from "@material-ui/core/Button";
-import ListItemText from "@material-ui/core/ListItemText";
+import "./CityDropdown.css";
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -18,28 +18,29 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CityDropdown2(props) {
+export default function CityDropdown(props) {
   const classes = useStyles();
   const [city, setCity] = React.useState("Edmonton");
   const [open, setOpen] = React.useState(false);
 
-  const handleClose = (cityID, cityName) => {
+  const handleClose = () => {
     setOpen(false);
-    setCity(cityName);
-    props.onCityChange(cityID);
   };
 
   const handleOpen = () => {
     setOpen(true);
   };
+  const handleChange = (cityID, cityName) => {
+    setCity(cityName);
+    props.onCityChange(cityID);
+  };
 
   return (
     <div>
       <Button className={classes.button} onClick={handleOpen}>
-        Please select a city
+        <div className="citydropdownlabel">Please select a city</div>
       </Button>
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-controlled-open-select-label">City</InputLabel>
         <Select
           labelId="demo-controlled-open-select-label"
           id="demo-controlled-open-select"
@@ -52,9 +53,9 @@ export default function CityDropdown2(props) {
             <MenuItem
               value={city.Name}
               key={index}
-              onClick={() => handleClose(city.ID, city.Name)}
+              onClick={() => handleChange(city.ID, city.Name)}
             >
-              <ListItemText primary={city.Name} />
+              <div className="dropdowncitytext">{city.Name}</div>
             </MenuItem>
           ))}
         </Select>
