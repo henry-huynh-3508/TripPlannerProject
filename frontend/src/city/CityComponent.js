@@ -1,17 +1,7 @@
 import React from "react";
 import "./CityComponent.css";
 import { useQuery } from "@apollo/react-hooks";
-import gql from "graphql-tag";
-
-const GET_CITY = gql`
-  query GetCityInfo($id: ID!) {
-    City_getCityInfo(ID: $id) {
-      ID
-      Name
-      Description
-    }
-  }
-`;
+import { GET_CITY } from "./CityComponentQueries";
 
 export default function CityComponent(props) {
   const { loading, error, data } = useQuery(GET_CITY, {
@@ -19,9 +9,13 @@ export default function CityComponent(props) {
   });
   if (error) return <h1>Something went wrong!</h1>;
   if (loading) return <h1>Loading...</h1>;
-  console.log(data);
   const description = data.City_getCityInfo.Description;
-  return <div className="citytext">{description}</div>;
+  return (
+    <div>
+      <div className="citytitle">Description</div>
+      <div className="citytext">{description}</div>
+    </div>
+  );
 }
 
 export { CityComponent };
