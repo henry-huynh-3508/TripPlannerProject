@@ -10,7 +10,6 @@ export class WeatherAPI {
    * Return a weather object that matches WeatherForecast schema
    */
   public async getWeatherForecast(lat: number, lng: number) {
-    // set the coordinates (latitude,longitude)
     this.weather.setCoordinates(lat, lng);
     const rawWeather = await this.weather.getCurrentWeatherForecast();
     const finalWeather = this.generateCurrentWeatherForecastResponse(
@@ -44,7 +43,6 @@ export class WeatherAPI {
   ) {
     const dailyWeatherForecast: any[] = [];
     for (let i = 0; i < days; i++) {
-      //console.log(weatherObj["daily"][i]);
       const weatherForecast: any = {};
       // Create a new JavaScript Date object based on the timestamp
       // multiplied by 1000 so that the argument is in milliseconds, not seconds.

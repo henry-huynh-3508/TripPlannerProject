@@ -7,6 +7,10 @@ import CityComponent from "../city/CityComponent";
 import { GET_CITIES } from "./TripplannerQueries";
 import CurrentWeather from "../weather/currentweatherforecast/CurrentWeather";
 import DailyWeather from "../weather/dailyweatherforecast/DailyWeather";
+
+/**
+ * Main application
+ */
 function Tripplanner() {
   const { loading, error, data } = useQuery(GET_CITIES);
   //local cityID state
