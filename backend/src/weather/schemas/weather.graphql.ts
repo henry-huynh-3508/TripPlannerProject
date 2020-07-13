@@ -34,16 +34,27 @@ const schema = gql`
   #Query
   type Query {
     """
-    This query is used to get weather forecast for current day
+    This query is used to get weather forecast for current day based on coordinates
     """
     Weather_getCurrentWeatherForecast(
       coordinate: WeatherCoordinate
     ): CurrentWeatherForecast
     """
-    This query is used to get weather forecast based on requested days
+    This query is used to get weather forecast for current day based on cityID
+    """
+    Weather_getCurrentWeatherForecast(cityID: ID!): CurrentWeatherForecast
+    """
+    This query is used to get weather forecast based on coordinates,requested days
     """
     Weather_getWeatherForecastInAdvance(
       coordinate: WeatherCoordinate
+      howmanydays: Int = 5
+    ): [DailyWeatherForecast]
+    """
+    This query is used to get weather forecast based on cityID,requested days
+    """
+    Weather_getWeatherForecastInAdvance(
+      cityID: ID!
       howmanydays: Int = 5
     ): [DailyWeatherForecast]
   }
