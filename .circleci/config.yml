@@ -75,6 +75,8 @@ jobs:
             - v1-dependencies-{{ checksum "package.json" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
+      # Frontend .env injection
+      - run: echo -n $FRONTEND_ENV | tr " " "\n" > .env
       # install dependencies
       - run: npm install
 
@@ -98,8 +100,6 @@ jobs:
     steps:
       - checkout:
           path: ~/repo
-      # Frontend .env injection
-      - run: echo -n $PROD_FRONTEND_ENV | tr " " "\n" > .env
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
@@ -115,7 +115,7 @@ jobs:
 
           key: v1-dependencies-{{ checksum "package.json" }}
       # run build
-      #- run: npm run build
+      # TODO add deployment from gcloud services
 
 #------------------------------------------------------------------------------
 #ALL NEW DEPLOYMENTS MUST PASS ALL TESTS!!!
