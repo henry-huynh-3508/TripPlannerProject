@@ -6,6 +6,7 @@ import CityDropdown from "./dropdownmenu/CityDropdown";
 import CityComponent from "../city/CityComponent";
 import { GET_CITIES } from "./TripplannerQueries";
 import CurrentWeather from "../weather/currentweatherforecast/CurrentWeather";
+import DailyWeather from "../weather/dailyweatherforecast/DailyWeather";
 function Tripplanner() {
   const { loading, error, data } = useQuery(GET_CITIES);
   //local cityID state
@@ -32,6 +33,9 @@ function Tripplanner() {
           </Grid>
           <Grid item xs={12} sm={12}>
             <CurrentWeather cityID={cityID}></CurrentWeather>
+          </Grid>
+          <Grid item xs={12} sm={12}>
+            <DailyWeather cityID={cityID}></DailyWeather>
           </Grid>
         </Grid>
       </main>
