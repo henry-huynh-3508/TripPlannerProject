@@ -42,7 +42,9 @@ const schema = gql`
     """
     This query is used to get weather forecast for current day based on cityID
     """
-    Weather_getCurrentWeatherForecast(cityID: ID!): CurrentWeatherForecast
+    Weather_getCurrentWeatherForecastbyCityID(
+      cityID: ID!
+    ): CurrentWeatherForecast
     """
     This query is used to get weather forecast based on coordinates,requested days
     """
@@ -53,7 +55,7 @@ const schema = gql`
     """
     This query is used to get weather forecast based on cityID,requested days
     """
-    Weather_getWeatherForecastInAdvance(
+    Weather_getWeatherForecastInAdvancebyCityID(
       cityID: ID!
       howmanydays: Int = 5
     ): [DailyWeatherForecast]
