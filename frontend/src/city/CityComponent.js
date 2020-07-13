@@ -20,7 +20,8 @@ export default function CityComponent(props) {
   if (error) return <h1>Something went wrong!</h1>;
   if (loading) return <h1>Loading...</h1>;
   console.log(data);
-  return <div></div>;
+  const description = data.City_getCityInfo.Description;
+  return <div className="citytext">{description}</div>;
 }
 
 export { CityComponent };
