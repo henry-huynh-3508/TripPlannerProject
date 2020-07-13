@@ -5,9 +5,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 In the project directory, you can run:
 
 ### `npm start`
+You can boot up local application server in backend folder in a similar manner
+### `cd ../backend`
+### `npm start`
+Make sure to `npm install` to install all dependencies before you start
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+By default, backend server will run on port 8080, make sure to run backend server if you want to test live call.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
